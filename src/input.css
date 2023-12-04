@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.discription{
+  margin-top: 7%;
+  padding-left: 3%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+  
+.logo {
+    margin-left: 2%;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  .nav-list li {
+    padding-top: 3%;
+    margin-right: 20px;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-list a:hover {
+    color: #ffcc00;
+  }
+  
+.LogOutBtn:hover {
+    color: #ffcc00;
+     text-decoration: none;
+  
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }

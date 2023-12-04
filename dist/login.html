@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- navbar started -->
+  <div class="navbar bg-[#7749F8]">
+    <div class="m-3">
+      <a class="text-xl text-white ml-20 font-bold cursor-pointer">Personal Blogging App</a>
+    </div>
+
+    <div class="navbar-end">
+      <a href="Home.html" class="bg-transparent border-none text-white mr-20 font-bold hover:text-black">Signup</a>
+
+    </div>
+  </div>
+  <!-- navbar ended -->
+
+
+  <!-- header started -->
+  <div class=" bg-[#fff] p-7">
+    <header class="ml-20 text-4xl font-bold cursor-pointer">Login</header>
+  </div>
+  <!-- header ended -->
+
+  <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full mb-44">
+
+      <form id="login-form" class="shadow-black-600/50 ">
+        <div class="mb-4 flex justify-center mt-6">
+          <input id="loginUserEmail" type="text" placeholder="Email"
+            class="w-3/4 px-3 py-2 border rounded-md placeholder:text-lg outline-[#7749F8] shadow-md ">
+        </div>
+        <div class="mb-4 flex justify-center">
+          <input id="loginPassword"  type="password" placeholder="Password"
+            class="w-3/4 px-3 py-2 border rounded-md placeholder:text-lg outline-[#7749F8] shadow-md ">
+        </div>
+        <div class="discription">
+          <span class="ml-11 ">Don't have an account?</span>
+          <a href="signup.html" class="font-bold hover:text-gray-500">Sign up</a>
+        </div>
+        <div class="flex justify-center">
+          <button type="submit"
+            class="bg-[#7749F8] shadow-xl shadow-black/20 text-white py-2 px-4 rounded-md mt-3">Login</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  </div>
+
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>
