@@ -1,21 +1,21 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js';
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDa7snxEPB0yiDAWPz7oBua0tnadmb1RSI",
+  authDomain: "bloggin-app-5fd75.firebaseapp.com",
+  projectId: "bloggin-app-5fd75",
+  storageBucket: "bloggin-app-5fd75.appspot.com",
+  messagingSenderId: "169376311090",
+  appId: "1:169376311090:web:7382850b348cb1b006d92b",
+  measurementId: "G-VGT2DKXBQE"
+};
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA9Y6qB5_rIV7UUca8aI0cBjlizMYH2V2c",
-    authDomain: "test-login-ab469.firebaseapp.com",
-    projectId: "test-login-ab469",
-    storageBucket: "test-login-ab469.appspot.com",
-    messagingSenderId: "38502694877",
-    appId: "1:38502694877:web:5d7369ab3ad1ad27560034",
-    measurementId: "G-CHVN9M534B"
-  };
-
-
-
-  export const app = initializeApp(firebaseConfig);
-  export const auth = getAuth(app);
-  export const db = getFirestore(app);
+export { app, auth, db, storage, ref, uploadBytes, getDownloadURL };

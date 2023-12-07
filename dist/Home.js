@@ -1,52 +1,78 @@
-
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
-import {
-    collection,
-    getDocs,
-    query,
-    where,
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+import { 
+  collection, 
+  addDoc, 
+  getDocs, 
+  Timestamp, 
+  query, 
+  orderBy, 
+  where, 
+  deleteDoc, 
+  doc, 
+  updateDoc 
 } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+
 import { auth, db } from "./config.js";
 
-// Assuming you have an HTML element with the id 'container'
-const container = document.getElementById('container');
+
 
 onAuthStateChanged(auth, async (user) => {
-    try {
-        if (user) {
-            const uid = user.uid;
-            console.log("userUid ===>", uid);
-
-            const userQuery = query(collection(db, "users"), where("uid", "==", uid));
-            const userQuerySnapshot = await getDocs(userQuery);
-
-            if (userQuerySnapshot.empty) {
-                console.log("No matching documents for user UID:", uid);
-                // Handle the case where no matching document is found
-            } else {
-                userQuerySnapshot.forEach((userDoc) => {
-                    console.log(userDoc.data());
-                    container.innerHTML = userDoc.data().name;
-                });
-            }
-        } else {
-            window.location = "login.html";
-        }
-    } catch (error) {
-        console.error("Error:", error.message);
-        // Handle the error as needed
-    }
-});
-
-
-const title = document.querySelector("#title")
-const discription = document.querySelector("#discription")
-const form = document.querySelector(".form")
-
-
-
-
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
+    if (user) {
+      const userQuery = query(collection(db, "users"), where("uid", "==", user.uid));
+      const userQuerySnapshot = await getDocs(userQuery);
+  
+      userQuerySnapshot.forEach((userDoc) => {
+        console.log(userDoc.data());
+        document.querySelector(".user-name").innerText = userDoc.data().name;
+      });
     
-})
+  
+    //   await renderTasks(user.uid);
+    } else {
+        window.location = "login.html";
+    }
+  });
+
+
+
+
+  const title = document.querySelector("#title")
+  const description = document.querySelector("#description")
+  const form = document.querySelector(".form")
+  let arry =[]
+  
+  form.addEventListener ("submit", async(e)=>{
+      e.preventDefault();
+      const obj ={
+        title: title.value,
+        Description: description.value,
+        uid:auth.currentUser.uid,
+        postDate: Timestamp.fromDate(new Date())
+    }
+    try {
+        const docRef = await addDoc(collection(db, "posts"),obj);
+        console.log("Document written with ID: ", docRef.id);
+        console.log(arry);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+      arry.push(obj)
+
+
+  })
+
+
+
+
+
+const logoutButton = document.querySelector("#logoutBtn");
+logoutButton.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      console.log("logout");
+      window.location = "login.html";
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
