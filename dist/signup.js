@@ -25,15 +25,11 @@ const uploadPhoto = document.querySelector("#upload-photo");
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   
-  // Show loading message
-  const loadingMessage = document.getElementById('loading-message');
-  loadingMessage.style.display = 'block';
+ 
 
   if (password.value !== repeatPassword.value) {
     console.error("Passwords do not match");
 
-    // Hide loading message if there's an error
-    loadingMessage.style.display = 'none';
     return;
   }
 
@@ -43,11 +39,7 @@ form.addEventListener('submit', async (event) => {
 
     const file = uploadPhoto.files[0];
     if (!file) {
-      console.error("No file selected for upload.");
-
-      // Hide loading message if there's an error
-      loadingMessage.style.display = 'none';
-      return;
+  
     }
 
     // Uploading Profile Picture
@@ -55,7 +47,8 @@ form.addEventListener('submit', async (event) => {
     await uploadBytes(storageRef, file);
     const url = await getDownloadURL(storageRef);
 
-    // Add User to Firestore
+
+
     const userData = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -71,7 +64,6 @@ form.addEventListener('submit', async (event) => {
   } catch (error) {
     console.error('Error creating user:', error.code, error.message);
   } finally {
-    // Hide loading message after completion (whether success or error)
-    loadingMessage.style.display = 'none';
+
   }
 });
