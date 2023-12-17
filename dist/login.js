@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 import { auth } from "./config.js";
 
@@ -17,7 +17,7 @@ form.addEventListener("submit", (event) => {
     
   
     
-      window.location = 'Home.html'
+      window.location = 'Dashboard.html'
 
 })
 .catch((error) => {

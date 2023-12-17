@@ -3,6 +3,9 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js';
 
+
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyDa7snxEPB0yiDAWPz7oBua0tnadmb1RSI",
   authDomain: "bloggin-app-5fd75.firebaseapp.com",
